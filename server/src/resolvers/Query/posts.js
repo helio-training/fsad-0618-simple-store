@@ -1,6 +1,6 @@
 const { getUserId } = require('../../utils')
 
-const Posts = {
+const posts = {
   feed(parent, args, ctx, info) {
     return ctx.db.query.posts({ where: { isPublished: true } }, info)
   },
@@ -23,4 +23,4 @@ const Posts = {
   },
 }
 
-module.exports = { Query: Posts }
+module.exports = { posts }
