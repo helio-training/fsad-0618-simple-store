@@ -1,5 +1,4 @@
-<h1 align="center"><strong>Boilerplate for a Advanced Fullstack GraphQL App with React</strong></h1>
-
+<h1 align="center">Refactored Fullstack Boilerplate using GraphQL, React, & Prisma</h1>
 <br />
 
 ![](https://imgur.com/ousyQaC.png)
@@ -20,25 +19,25 @@ For a fully-fledged **React & Apollo tutorial**, visit [How to GraphQL](https://
 
 ## Requirements
 
-You need to have the [GraphQL CLI](https://github.com/graphql-cli/graphql-cli) installed to bootstrap your GraphQL server using `graphql create`:
-
-```sh
-npm install -g graphql-cli
-```
+You need to have the [GIT](https://gist.github.com/derhuerst/1b15ff4652a867391f03) installed to clone down the Repository
 
 ## Getting started
 
+Before you can get started with this boilerplate there are some initial configurations that need to occur. These configurations involve deploying to a [Prisma](https://www.prisma.io/docs/tutorials/setup-prisma/demo-server-ouzia3ahqu) endpoint and setting up environment variables. In this example, we will be using a Prisma demo server and thus will require a Prisma [account](https://app.prisma.io/). 
+
 ```sh
-# 1. Bootstrap GraphQL server in directory `my-app`, based on `react-fullstack-advanced` boilerplate
-graphql create my-app --boilerplate react-fullstack-advanced
+# 1. Clone the Repo from GitHub
+        - optionally rename the cloned Repo by providing a project name
+git clone https://github.com/wes-cutting/graphql-prisma-boilerplate <project-name>
 
-# 2. When prompted, deploy the Prisma service to a _public cluster_
+# 2. Navigate into the `server` directory of the new project
+cd <project-name>/server
 
-# 3. Navigate into the `server` directory of the new project
-cd my-app/server
+# 3. Create an environment variable file
+touch .env
 
-# 4. Start the server
-yarn dev # runs server on http://localhost:4000, and opens GraphQL PLayground
+# 4. Open your desired text editor and add in the falling values to .env file
+
 
 # 5. Open a new tab in the terminal and navigate back into my-app;
 # then run the app
