@@ -28,7 +28,7 @@ Before you can get started with this boilerplate there are some initial configur
 ```sh
 # 1. Clone the Repo from GitHub
         - optionally rename the cloned Repo by providing a project name
-git clone https://github.com/wes-cutting/graphql-prisma-boilerplate <project-name>
+git clone https://github.com/helio-training/graphql-prisma-boilerplate <project-name>
 
 # 2. In your favorite terminal navigate into the `database` directory of the new project
 cd <project-name>/server/database
