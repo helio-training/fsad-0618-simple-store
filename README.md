@@ -34,7 +34,7 @@ git clone https://github.com/helio-training/graphql-prisma-boilerplate <project-
 cd <project-name>/server/database
 
 # 3. Deploy your database using prisma
-prismactl deploy
+prisma deploy
 
 # 4. Open your project in your desired IDE and open the 'prisma.yml' file
         - <project-name>/server/database/prisma.yml
