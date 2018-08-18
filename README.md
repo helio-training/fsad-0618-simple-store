@@ -30,19 +30,44 @@ Before you can get started with this boilerplate there are some initial configur
         - optionally rename the cloned Repo by providing a project name
 git clone https://github.com/wes-cutting/graphql-prisma-boilerplate <project-name>
 
-# 2. Navigate into the `server` directory of the new project
-cd <project-name>/server
+# 2. In your favorite terminal navigate into the `database` directory of the new project
+cd <project-name>/server/database
 
-# 3. Create an environment variable file
-touch .env
+# 3. Deploy your database using prisma
+prismactl deploy
 
-# 4. Open your desired text editor and add in the falling values to .env file
+# 4. Open your project in your desired IDE and open the 'prisma.yml' file
+        - <project-name>/server/database/prisma.yml
+        - this file is used to deploy your datamodel to a prisma endpoint
+        - note the field 'endpoint: <prisma-url>'
 
+# 5. Comment In/Out 'endpoint: ' lines in your prisma.yml
+        - Line 2 has this line 'endpoint: ${env:PRISMA_ENDPOINT}' commented out
+        - The last line, as of the deploymnet to Prisma, should show 'endpoint: <prisma-url>'
+        - Invert those comments, bring Line 2 back into focus and comment out the new line
 
-# 5. Open a new tab in the terminal and navigate back into my-app;
-# then run the app
-cd ..
-yarn start
+# 6. In the 'server' directory create an environment variable file named '.env' 
+touch .env 
+
+# 7. In your desired IDE add in the falling values to .env file
+        - Paste in the Prisma URL from above in the prisma.yml
+        - You make up two passwords
+PRISMA_ENDPOINT="<replace-with-prisma-url>"
+PRISMA_SECRET="<insert-password-1>"
+APP_SECRET="<insert-password-2>"
+
+# 8. Configuration Complete
+
+# 9. In order to run your application you need to launch your client and server separately
+    # in one terminal window
+        cd <project-name>/server
+        npm install 
+        npm start
+    # in another terminal window
+        cd <project-name>/client
+        npm install
+        npm start
+
 ```
 
 ## Documentation
