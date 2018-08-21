@@ -21,3 +21,13 @@ enum Role {
   ADMIN
   SHOPPER
 }
+
+
+type Product {
+  id: ID! @unique
+  name: String! @unique
+  desc: String!
+  image: String!
+  price: Float!
+  source: String!
+}

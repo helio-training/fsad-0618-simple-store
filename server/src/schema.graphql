@@ -1,18 +1,27 @@
 # import Post from "./generated/prisma.graphql"
+# import Product from "./generated/prisma.graphql"
 
 type Query {
   feed: [Post!]!
   drafts: [Post!]!
   post(id: ID!): Post
   me: User
+  product(id: ID!): Product
+  products: [Product!]!
 }
 
 type Mutation {
+  ### Users
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
+  ### Posts
   createDraft(title: String!, text: String!): Post!
   publish(id: ID!): Post!
   deletePost(id: ID!): Post!
+  ### Products
+  createProduct(name: String!, desc: String!, image: String!, price: Float!, source: String!): Product!
+  updateProduct(id: ID!, name: String!, desc: String!, image: String!, price: Float!, source: String!): Product
+  deleteProduct(id: ID!): Product!
 }
 
 type Subscription {

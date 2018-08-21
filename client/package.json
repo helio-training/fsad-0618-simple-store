@@ -1,5 +1,5 @@
 {
-  "name": "graphql-prisma-boilerplate-client",
+  "name": "simple-store",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
