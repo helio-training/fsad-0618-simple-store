@@ -38,16 +38,22 @@ const post = {
   },
 
   async deletePost(parent, { id }, ctx, info) {
-    const userId = getUserId(ctx)
-    const postExists = await ctx.db.exists.Post({
-      id,
-      author: { id: userId },
-    })
-    if (!postExists) {
-      throw new Error(`Post not found or you're not the author`)
-    }
+      const userId = getUserId(ctx)
+      const postExists = await ctx.db.exists.Post({
+          id,
+          author: { id: userId },
+      })
 
-    return ctx.db.mutation.deletePost({ where: { id } })
+      const requestingUserIsAdmin = await ctx.db.exists.User({
+          id: userId,
+          role: 'ADMIN',
+      })
+
+      if (!postExists && !requestingUserIsAdmin) {
+          throw new Error(`Post not found or you don't have access rights to delete it.`)
+      }
+
+      return ctx.db.mutation.deletePost({ where: { id } })
   },
 }
 
