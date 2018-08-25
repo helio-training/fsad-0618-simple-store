@@ -2,16 +2,25 @@
 # import Product from "./generated/prisma.graphql"
 
 type Query {
+  ### Posts
   feed: [Post!]!
   drafts: [Post!]!
   post(id: ID!): Post
+  ### User
   me: User
+  ### Products
   product(id: ID!): Product
   products: [Product!]!
+  ### Carts
+  cart: User
+  ### Orders
+  allOrders: [Order!]!
+  myOrders: [Order!]!
+  order(id: ID!): Order
 }
 
 type Mutation {
-  ### Users
+  ### Auth
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
   ### Posts
@@ -20,8 +29,15 @@ type Mutation {
   deletePost(id: ID!): Post!
   ### Products
   createProduct(name: String!, desc: String!, image: String!, price: Float!, source: String!): Product!
-  updateProduct(id: ID!, name: String!, desc: String!, image: String!, price: Float!, source: String!): Product
+  updateProduct(id: ID!, name: String!, desc: String!, image: String!, price: Float!, source: String!): Product!
   deleteProduct(id: ID!): Product!
+  ### Cart
+  addProductToCart(productID: ID!): User
+  removeProductFromCart(productID: ID!): User
+  emptyCart: User
+  checkout: Order
+  ### Order
+  fulfillOrder(id: ID!): Order!
 }
 
 type Subscription {
@@ -38,4 +54,7 @@ type User {
   email: String!
   name: String!
   posts: [Post!]!
+  role: Role!
+  cart: [Product!]!
+  orders: [Order!]!
 }

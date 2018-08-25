@@ -5,7 +5,7 @@ type Post {
   isPublished: Boolean! @default(value: "false")
   title: String!
   text: String!
-  author: User!
+  author: User! @relationship(value: "UserFeed")
 }
 
 type User {
@@ -13,8 +13,11 @@ type User {
   email: String! @unique
   password: String!
   name: String!
-  posts: [Post!]!
+  posts: [Post!]! @relationship(value: "UserFeed")
   role: Role! @default(value: "SHOPPER")
+
+  cart: [Product!]!
+  orders: [Order!]! @relationship(value: "OrderHistory")
 }
 
 enum Role {
@@ -22,12 +25,20 @@ enum Role {
   SHOPPER
 }
 
-
 type Product {
   id: ID! @unique
   name: String! @unique
   desc: String!
-  image: String!
+  image: String
   price: Float!
-  source: String!
+  source: String
+}
+
+type Order {
+  id: ID! @unique
+  buyer: User! @relationship(value: "OrderHistory")
+  products: [Product!]!
+  purchaseDate: DateTime!
+  comments: [Post!]!
+  isFulFilled: Boolean! @default(value: "false")
 }
